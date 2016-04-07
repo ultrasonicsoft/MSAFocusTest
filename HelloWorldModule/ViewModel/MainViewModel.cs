@@ -38,6 +38,28 @@ namespace HelloWorldModule.ViewModel
 
         }
 
+        private string _parentMessageText;
+
+        public string ParentMessageText
+        {
+            get { return this._parentMessageText; }
+            set
+            {
+                SetProperty(ref this._parentMessageText, value);
+            }
+        }
+
+        private string _uniqueId;
+
+        public string UniqueId
+        {
+            get { return this._uniqueId; }
+            set
+            {
+                SetProperty(ref this._uniqueId, value);
+            }
+        }
+
         private ICollectionView _customerView;
 
         public ICollectionView CustomerView
@@ -48,6 +70,7 @@ namespace HelloWorldModule.ViewModel
 
         public ICommand LoadCustomersCommand { get; private set; }
         public ICommand AddNewCustomControlCommand{ get; private set; }
+        public ICommand SetChildrenMessageTextCommand { get; private set; }
 
         private int UniqueCustomControlId = 0;
         private ObservableCollection<MSAFocusControlViewModel> _focusControlViewModelsCollection;
@@ -71,6 +94,25 @@ namespace HelloWorldModule.ViewModel
 
             this.AddNewCustomControlCommand = new DelegateCommand<object>(
                                    this.OnLoadAddNewCustomControlCommand, this.CanAddNewCustomControlCommand);
+
+            this.SetChildrenMessageTextCommand = new DelegateCommand<object>(
+                                               this.OnLoadSetChildrenMessageTextCommand, this.CanSetChildrenMessageTextCommand);
+
+            
+        }
+
+        private void OnLoadSetChildrenMessageTextCommand(object obj)
+        {
+            foreach (var msaFocusControlViewModel in FocusControlViewModelCollection)
+            {
+                msaFocusControlViewModel.CustomMessage = ParentMessageText;
+            }
+            Console.WriteLine("set child message");   
+        }
+
+        private bool CanSetChildrenMessageTextCommand(object arg)
+        {
+            return true;
         }
 
         private void OnLoadAddNewCustomControlCommand(object obj)

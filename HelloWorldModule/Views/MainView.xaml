@@ -8,15 +8,13 @@
     d:DataContext="{d:DesignInstance viewModel:MainViewModel, IsDesignTimeCreatable=True}"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:viewModel="clr-namespace:HelloWorldModule.ViewModel">
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -42,12 +40,20 @@
                 <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 <Button Command="{Binding Path=LoadCustomersCommand}">Load Customers</Button>
                 <Button Command="{Binding Path=AddNewCustomControlCommand}">Load Custom Control</Button>
-                <Button>Load Control</Button>
-                <Button>Set Content</Button>
+                <Button Command="{Binding Path=SetChildrenMessageTextCommand}">Set Custom Message</Button>
             </StackPanel>
         </Grid>
 
-        <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding FocusControlViewModelCollection}" >
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox Width="150" Grid.Column="0" Text="{Binding ParentMessageText}"></TextBox>
+            <TextBox Width="150" Grid.Column="1" Text="{Binding UniqueId}"></TextBox>
+        </Grid>
+
+        <ListView Grid.Column="0" Grid.Row="2" ItemsSource="{Binding FocusControlViewModelCollection}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <views:MSAFocusControl DataContext="{Binding}"/>
