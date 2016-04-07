@@ -49,7 +49,7 @@ namespace HelloWorldModule.ViewModel
         public ICommand LoadCustomersCommand { get; private set; }
         public ICommand AddNewCustomControlCommand{ get; private set; }
 
-
+        private int UniqueCustomControlId = 0;
         private ObservableCollection<MSAFocusControlViewModel> _focusControlViewModelsCollection;
         public ObservableCollection<MSAFocusControlViewModel> FocusControlViewModelCollection
         {
@@ -61,9 +61,6 @@ namespace HelloWorldModule.ViewModel
         public MainViewModel()
         {
             FocusControlViewModelCollection = new ObservableCollection<MSAFocusControlViewModel>();
-            //FocusControlViewModelCollection.Add(new MSAFocusControlViewModel { Id = "From Parent 1" });
-            //FocusControlViewModelCollection.Add(new MSAFocusControlViewModel { Id = "From Parent 2" });
-            //FocusControlViewModelCollection.Add(new MSAFocusControlViewModel { Id = "From Parent 3" });
 
             Customers = new ObservableCollection<Customer>();
 
@@ -78,7 +75,13 @@ namespace HelloWorldModule.ViewModel
 
         private void OnLoadAddNewCustomControlCommand(object obj)
         {
-            FocusControlViewModelCollection.Add(new MSAFocusControlViewModel { Id = "From Parent 1" });
+            UniqueCustomControlId++;
+            MSAFocusControlViewModel newControlViewModel = new MSAFocusControlViewModel
+            {
+                Id = UniqueCustomControlId.ToString(),
+                CustomMessage = string.Empty
+            };
+            FocusControlViewModelCollection.Add(newControlViewModel);
         }
 
         private bool CanAddNewCustomControlCommand(object arg)
