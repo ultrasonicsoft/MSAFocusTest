@@ -46,26 +46,44 @@ namespace HelloWorldModule.ViewModel
             set { SetProperty(ref this._customerView, value); }
         }
 
+        public ICommand LoadCustomersCommand { get; private set; }
+        public ICommand AddNewCustomControlCommand{ get; private set; }
 
-        private string _test;
-        public string Test
+
+        private ObservableCollection<MSAFocusControlViewModel> _focusControlViewModelsCollection;
+        public ObservableCollection<MSAFocusControlViewModel> FocusControlViewModelCollection
         {
-            get { return this._test; }
-            set { SetProperty(ref this._test, value); }
+            get { return this._focusControlViewModelsCollection; }
+            set { SetProperty(ref this._focusControlViewModelsCollection, value); }
         }
 
-        //public string Test { get; private set; }
-        public ICommand LoadCustomersCommand { get; private set; }
+
         public MainViewModel()
         {
+            FocusControlViewModelCollection = new ObservableCollection<MSAFocusControlViewModel>();
+            //FocusControlViewModelCollection.Add(new MSAFocusControlViewModel { Id = "From Parent 1" });
+            //FocusControlViewModelCollection.Add(new MSAFocusControlViewModel { Id = "From Parent 2" });
+            //FocusControlViewModelCollection.Add(new MSAFocusControlViewModel { Id = "From Parent 3" });
+
             Customers = new ObservableCollection<Customer>();
 
             CustomerView = new CollectionView(Customers);
-            Test = "Balram";
             SearchText = string.Empty;
             this.LoadCustomersCommand = new DelegateCommand<object>(
                                    this.OnLoadCustomersCommand, this.CanLoadCustomersCommand);
 
+            this.AddNewCustomControlCommand = new DelegateCommand<object>(
+                                   this.OnLoadAddNewCustomControlCommand, this.CanAddNewCustomControlCommand);
+        }
+
+        private void OnLoadAddNewCustomControlCommand(object obj)
+        {
+            FocusControlViewModelCollection.Add(new MSAFocusControlViewModel { Id = "From Parent 1" });
+        }
+
+        private bool CanAddNewCustomControlCommand(object arg)
+        {
+            return true;
         }
 
         private bool CanLoadCustomersCommand(object arg)
@@ -75,10 +93,9 @@ namespace HelloWorldModule.ViewModel
 
         private void OnLoadCustomersCommand(object obj)
         {
-            Test = "Sujeet";
             //Customers = new ObservableCollection<Customer>(customerService.GetAllCustomer());
             var customers = customerService.GetAllCustomer();
-            CustomerView= CollectionViewSource.GetDefaultView(customers);
+            CustomerView = CollectionViewSource.GetDefaultView(customers);
 
             if (CustomerView != null)
             {

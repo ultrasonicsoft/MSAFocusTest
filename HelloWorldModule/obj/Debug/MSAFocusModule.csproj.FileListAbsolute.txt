@@ -18,3 +18,6 @@ C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloW
 C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
 C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
 C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml
+C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\obj\Debug\Views\MSAFocusControl.g.cs
+C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\obj\Debug\Views\MSAFocusControl.baml

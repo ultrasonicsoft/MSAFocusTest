@@ -1,13 +1,14 @@
 ﻿<UserControl x:Class="MainFocusModule.Views.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:HelloWorldModule.Views"
              
-            d:DataContext="{d:DesignInstance viewModel:MainViewModel, IsDesignTimeCreatable=True}"
-        
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance viewModel:MainViewModel, IsDesignTimeCreatable=True}"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:viewModel="clr-namespace:HelloWorldModule.ViewModel">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -40,11 +41,18 @@
                 <Label>Filter:</Label>
                 <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 <Button Command="{Binding Path=LoadCustomersCommand}">Load Customers</Button>
-                <Button>Load Customers</Button>
+                <Button Command="{Binding Path=AddNewCustomControlCommand}">Load Custom Control</Button>
                 <Button>Load Control</Button>
                 <Button>Set Content</Button>
             </StackPanel>
         </Grid>
 
+        <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding FocusControlViewModelCollection}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <views:MSAFocusControl DataContext="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>
