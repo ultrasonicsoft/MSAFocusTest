@@ -28,7 +28,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <DataGrid Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Customers}" CanUserAddRows="True">
+            <DataGrid Grid.Row="0" Grid.Column="1" ItemsSource="{Binding CustomerView}" CanUserAddRows="True">
                 <DataGrid.ContextMenu>
                     <ContextMenu >
                         <MenuItem Header="Add Row" />
@@ -38,7 +38,7 @@
             </DataGrid>
             <StackPanel Grid.Row="0" Grid.Column="0">
                 <Label>Filter:</Label>
-                <TextBox Text="{Binding Test}"></TextBox>
+                <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 <Button Command="{Binding Path=LoadCustomersCommand}">Load Customers</Button>
                 <Button>Load Customers</Button>
                 <Button>Load Control</Button>

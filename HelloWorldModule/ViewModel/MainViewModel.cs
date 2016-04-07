@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 using HelloWorldModule.Repository;
 using HelloWorldModule.Utils;
@@ -12,7 +14,7 @@ using Microsoft.Practices.Prism.Mvvm;
 
 namespace HelloWorldModule.ViewModel
 {
-    public class MainViewModel  : BindableBase
+    public class MainViewModel : BindableBase
     {
         private ICustomerService customerService = new CustomerService();
 
@@ -22,6 +24,28 @@ namespace HelloWorldModule.ViewModel
             get { return this._customers; }
             set { SetProperty(ref this._customers, value); }
         }
+
+        private string _searchText;
+
+        public string SearchText
+        {
+            get { return this._searchText; }
+            set
+            {
+                SetProperty(ref this._searchText, value);
+                CustomerView.Refresh();
+            }
+
+        }
+
+        private ICollectionView _customerView;
+
+        public ICollectionView CustomerView
+        {
+            get { return this._customerView; }
+            set { SetProperty(ref this._customerView, value); }
+        }
+
 
         private string _test;
         public string Test
@@ -34,8 +58,11 @@ namespace HelloWorldModule.ViewModel
         public ICommand LoadCustomersCommand { get; private set; }
         public MainViewModel()
         {
-            Test = "Balram";
             Customers = new ObservableCollection<Customer>();
+
+            CustomerView = new CollectionView(Customers);
+            Test = "Balram";
+            SearchText = string.Empty;
             this.LoadCustomersCommand = new DelegateCommand<object>(
                                    this.OnLoadCustomersCommand, this.CanLoadCustomersCommand);
 
@@ -49,7 +76,27 @@ namespace HelloWorldModule.ViewModel
         private void OnLoadCustomersCommand(object obj)
         {
             Test = "Sujeet";
-            Customers = new ObservableCollection<Customer>(customerService.GetAllCustomer());
+            //Customers = new ObservableCollection<Customer>(customerService.GetAllCustomer());
+            var customers = customerService.GetAllCustomer();
+            CustomerView= CollectionViewSource.GetDefaultView(customers);
+
+            if (CustomerView != null)
+            {
+                CustomerView.Filter = TextFilter;
+            }
+
+        }
+
+        public bool TextFilter(object o)
+        {
+            Customer customer = (o as Customer);
+            if (customer == null)
+                return false;
+
+            if (customer.Name.Contains(SearchText))
+                return true;
+            else
+                return false;
         }
     }
 }
