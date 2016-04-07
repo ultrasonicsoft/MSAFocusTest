@@ -15,3 +15,6 @@ C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloW
 C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\obj\Debug\HelloWorldModule.pdb
 C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\obj\Debug\HelloWorldModule_MarkupCompile.lref
 C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\obj\Debug\MSAFocusModule.csprojResolveAssemblyReference.cache
+C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
+C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll
+C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorldModule\bin\Debug\Microsoft.Practices.Prism.Mvvm.xml

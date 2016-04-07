@@ -10,18 +10,41 @@
     xmlns:viewModel="clr-namespace:HelloWorldModule.ViewModel">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Customers}">
-            <DataGrid.ContextMenu>
-                <ContextMenu >
-                    <MenuItem Header="Add Row" />
-                    <MenuItem Header="Delete Row" />
-                </ContextMenu>
-            </DataGrid.ContextMenu>
-        </DataGrid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Customers}" CanUserAddRows="True">
+                <DataGrid.ContextMenu>
+                    <ContextMenu >
+                        <MenuItem Header="Add Row" />
+                        <MenuItem Header="Delete Row" />
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+            </DataGrid>
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label>Filter:</Label>
+                <TextBox Text="{Binding Test}"></TextBox>
+                <Button Command="{Binding Path=LoadCustomersCommand}">Load Customers</Button>
+                <Button>Load Customers</Button>
+                <Button>Load Control</Button>
+                <Button>Set Content</Button>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </UserControl>
