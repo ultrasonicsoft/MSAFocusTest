@@ -69,7 +69,7 @@ namespace HelloWorldModule.ViewModel
         }
 
         public ICommand LoadCustomersCommand { get; private set; }
-        public ICommand AddNewCustomControlCommand{ get; private set; }
+        public ICommand AddNewCustomControlCommand { get; private set; }
         public ICommand SetChildrenMessageTextCommand { get; private set; }
 
         private int UniqueCustomControlId = 0;
@@ -98,16 +98,28 @@ namespace HelloWorldModule.ViewModel
             this.SetChildrenMessageTextCommand = new DelegateCommand<object>(
                                                this.OnLoadSetChildrenMessageTextCommand, this.CanSetChildrenMessageTextCommand);
 
-            
+
         }
 
         private void OnLoadSetChildrenMessageTextCommand(object obj)
         {
-            foreach (var msaFocusControlViewModel in FocusControlViewModelCollection)
+            if (!string.IsNullOrEmpty(UniqueId))
             {
-                msaFocusControlViewModel.CustomMessage = ParentMessageText;
+                var msaFocusControlViewModel =
+                    FocusControlViewModelCollection.FirstOrDefault(
+                        customControl => customControl.Id.Equals(UniqueId));
+                if (msaFocusControlViewModel != null)
+                {
+                    msaFocusControlViewModel.CustomMessage = ParentMessageText;
+                }
             }
-            Console.WriteLine("set child message");   
+            else
+            {
+                foreach (var msaFocusControlViewModel in FocusControlViewModelCollection)
+                {
+                    msaFocusControlViewModel.CustomMessage = ParentMessageText;
+                }
+            }
         }
 
         private bool CanSetChildrenMessageTextCommand(object arg)
