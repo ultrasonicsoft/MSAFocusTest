@@ -8,7 +8,7 @@ namespace MainFocusModule.Views
     /// <summary>
     /// Interaction logic for HelloWorldView.xaml
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class MainView
     {
         public MainView(IViewModel _viewModel)
         {
