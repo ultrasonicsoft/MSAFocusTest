@@ -1,6 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
 
 using System.Windows;
+using HelloWorldModule.Repository;
+using HelloWorldModule.ViewModel;
+using MainFocusModule.Views;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.UnityExtensions;
@@ -11,6 +14,10 @@ namespace HelloWorld
     {
         protected override DependencyObject CreateShell()
         {
+            this.Container.RegisterType<ICustomerService, CustomerService>();
+            this.Container.RegisterType<IViewModel, MainViewModel>();
+            this.Container.RegisterType<MainView>();
+
             return this.Container.Resolve<Shell>();
         }
 

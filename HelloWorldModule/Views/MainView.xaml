@@ -8,7 +8,6 @@
     d:DataContext="{d:DesignInstance viewModel:MainViewModel, IsDesignTimeCreatable=True}"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:viewModel="clr-namespace:HelloWorldModule.ViewModel">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>

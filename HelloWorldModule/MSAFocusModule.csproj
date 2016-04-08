@@ -109,6 +109,7 @@
     <Compile Include="Repository\ICustomerService.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Utils\DBManager.cs" />
+    <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\MSAFocusControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">

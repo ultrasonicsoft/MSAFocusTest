@@ -14,9 +14,9 @@ using Microsoft.Practices.Prism.Mvvm;
 
 namespace HelloWorldModule.ViewModel
 {
-    public class MainViewModel : BindableBase
+    public class MainViewModel : BindableBase, IViewModel
     {
-        private ICustomerService customerService = new CustomerService();
+        private readonly ICustomerService customerService;
 
         private ObservableCollection<Customer> _customers;
         public ObservableCollection<Customer> Customers
@@ -74,7 +74,7 @@ namespace HelloWorldModule.ViewModel
 
         public ICommand SetParentMessageTextCommand { get; private set; }
 
-        private int UniqueCustomControlId = 0;
+        private int _uniqueCustomControlId = 0;
         private ObservableCollection<MSAFocusControlViewModel> _focusControlViewModelsCollection;
         public ObservableCollection<MSAFocusControlViewModel> FocusControlViewModelCollection
         {
@@ -83,31 +83,26 @@ namespace HelloWorldModule.ViewModel
         }
 
 
-        public MainViewModel()
+        public MainViewModel(ICustomerService _customerService)
         {
+            customerService = _customerService;
             FocusControlViewModelCollection = new ObservableCollection<MSAFocusControlViewModel>();
-
             Customers = new ObservableCollection<Customer>();
-
             CustomerView = new CollectionView(Customers);
             SearchText = string.Empty;
+
             this.LoadCustomersCommand = new DelegateCommand<object>(
-                                   this.OnLoadCustomersCommand, this.CanLoadCustomersCommand);
+                                   this.OnLoadCustomersCommand, _ => true);
 
             this.AddNewCustomControlCommand = new DelegateCommand<object>(
-                                   this.OnLoadAddNewCustomControlCommand, this.CanAddNewCustomControlCommand);
+                                   this.OnLoadAddNewCustomControlCommand, _ => true);
 
             this.SetChildrenMessageTextCommand = new DelegateCommand<object>(
-                                               this.OnLoadSetChildrenMessageTextCommand, this.CanSetChildrenMessageTextCommand);
+                                               this.OnLoadSetChildrenMessageTextCommand, _ => true);
 
             this.SetParentMessageTextCommand = new DelegateCommand<object>(
-                                               this.OnLoadSetParentMessageTextCommand, this.CanSetParentMessageTextCommand);
-            
-        }
+                                               this.OnLoadSetParentMessageTextCommand, _ => true);
 
-        private bool CanSetParentMessageTextCommand(object arg)
-        {
-            return true;
         }
 
         private void OnLoadSetParentMessageTextCommand(object obj)
@@ -117,7 +112,6 @@ namespace HelloWorldModule.ViewModel
             {
                 ParentMessageText = senderCustomControlViewModel.CustomMessage;
             }
-            Console.WriteLine("child raised command and handled in parent");
         }
 
         private void OnLoadSetChildrenMessageTextCommand(object obj)
@@ -141,30 +135,15 @@ namespace HelloWorldModule.ViewModel
             }
         }
 
-        private bool CanSetChildrenMessageTextCommand(object arg)
-        {
-            return true;
-        }
-
         private void OnLoadAddNewCustomControlCommand(object obj)
         {
-            UniqueCustomControlId++;
+            _uniqueCustomControlId++;
             MSAFocusControlViewModel newControlViewModel = new MSAFocusControlViewModel
             {
-                Id = UniqueCustomControlId.ToString(),
+                Id = _uniqueCustomControlId.ToString(),
                 CustomMessage = string.Empty
             };
             FocusControlViewModelCollection.Add(newControlViewModel);
-        }
-
-        private bool CanAddNewCustomControlCommand(object arg)
-        {
-            return true;
-        }
-
-        private bool CanLoadCustomersCommand(object arg)
-        {
-            return true;
         }
 
         private void OnLoadCustomersCommand(object obj)
