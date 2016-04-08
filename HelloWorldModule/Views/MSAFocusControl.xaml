@@ -17,9 +17,13 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="0" Grid.Column="0">Update Button</Button>
+        <Button Grid.Row="0" 
+                Grid.Column="0"
+                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=2},
+                Path=DataContext.SetParentMessageTextCommand}"
+                CommandParameter="{Binding}">Update Button</Button>
         <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=CustomMessage}" Width="150"></TextBox>
-        <Label Grid.Row="1" Grid.Column="0">Unique Id: </Label>
+        <Label Grid.Row="1" Grid.Column="0">Unique Id:</Label>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Id}"></TextBlock>
     </Grid>
 </UserControl>

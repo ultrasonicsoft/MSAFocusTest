@@ -72,6 +72,8 @@ namespace HelloWorldModule.ViewModel
         public ICommand AddNewCustomControlCommand { get; private set; }
         public ICommand SetChildrenMessageTextCommand { get; private set; }
 
+        public ICommand SetParentMessageTextCommand { get; private set; }
+
         private int UniqueCustomControlId = 0;
         private ObservableCollection<MSAFocusControlViewModel> _focusControlViewModelsCollection;
         public ObservableCollection<MSAFocusControlViewModel> FocusControlViewModelCollection
@@ -98,7 +100,24 @@ namespace HelloWorldModule.ViewModel
             this.SetChildrenMessageTextCommand = new DelegateCommand<object>(
                                                this.OnLoadSetChildrenMessageTextCommand, this.CanSetChildrenMessageTextCommand);
 
+            this.SetParentMessageTextCommand = new DelegateCommand<object>(
+                                               this.OnLoadSetParentMessageTextCommand, this.CanSetParentMessageTextCommand);
+            
+        }
 
+        private bool CanSetParentMessageTextCommand(object arg)
+        {
+            return true;
+        }
+
+        private void OnLoadSetParentMessageTextCommand(object obj)
+        {
+            var senderCustomControlViewModel = obj as MSAFocusControlViewModel;
+            if (senderCustomControlViewModel != null)
+            {
+                ParentMessageText = senderCustomControlViewModel.CustomMessage;
+            }
+            Console.WriteLine("child raised command and handled in parent");
         }
 
         private void OnLoadSetChildrenMessageTextCommand(object obj)
