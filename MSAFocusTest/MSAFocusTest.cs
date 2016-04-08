@@ -19,7 +19,6 @@ namespace MSAFocusTest
         {
             _unityContainer = new UnityContainer();
             _unityContainer.RegisterType<ICustomerService, CustomerServiceMock>();
-
         }
         [TestMethod]
         public void CustomerServiceShouldReturnListOfTypeCustomer()
@@ -32,6 +31,12 @@ namespace MSAFocusTest
         {
             var customerService = _unityContainer.Resolve<ICustomerService>();
             CollectionAssert.AllItemsAreNotNull(customerService.GetAllCustomer().ToList());
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+            _unityContainer.Dispose();
         }
     }
 }
