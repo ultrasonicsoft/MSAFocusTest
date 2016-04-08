@@ -1,9 +1,6 @@
-﻿using System;
-using System.Configuration;
-using System.Linq;
+﻿using System.Linq;
 using HelloWorldModule.Repository;
 using HelloWorldModule.Utils;
-using Microsoft.Practices.Prism;
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

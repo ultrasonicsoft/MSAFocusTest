@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HelloWorldModule.Utils
 {
@@ -11,27 +8,17 @@ namespace HelloWorldModule.Utils
     {
         private SqlConnection sqlConnection;
         private string connectionString = @"Data Source =.\SQLExpress;Initial Catalog = MSAFocusDB; User Id = sa; password=123;";
-        public DBManager()
-        {
-            //sqlConnection.ConnectionString = connectionString;
-        }
 
         public IList<Customer> GetAllCustomers()
         {
             IList<Customer> allCustomers = new List<Customer>();
             try
             {
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (var con = new SqlConnection(connectionString))
                 {
-                    //
-                    // Open the SqlConnection.
-                    //
                     con.Open();
-                    //
-                    // The following code uses an SqlCommand based on the SqlConnection.
-                    //
-                    using (SqlCommand command = new SqlCommand("SELECT * FROM Customer", con))
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (var command = new SqlCommand("SELECT * FROM Customer", con))
+                    using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
