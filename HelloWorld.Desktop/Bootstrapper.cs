@@ -10,7 +10,7 @@ using Microsoft.Practices.Prism.UnityExtensions;
 
 namespace HelloWorld
 {
-    class Bootstrapper : UnityBootstrapper
+    public class Bootstrapper : UnityBootstrapper
     {
         protected override DependencyObject CreateShell()
         {
