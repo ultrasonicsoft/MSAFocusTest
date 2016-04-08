@@ -16,7 +16,7 @@ namespace HelloWorldModule.ViewModel
 {
     public class MainViewModel : BindableBase, IViewModel
     {
-        private readonly ICustomerService customerService;
+        private readonly ICustomerService _customerService;
 
         private ObservableCollection<Customer> _customers;
         public ObservableCollection<Customer> Customers
@@ -85,7 +85,7 @@ namespace HelloWorldModule.ViewModel
 
         public MainViewModel(ICustomerService _customerService)
         {
-            customerService = _customerService;
+            this._customerService = _customerService;
             FocusControlViewModelCollection = new ObservableCollection<MSAFocusControlViewModel>();
             Customers = new ObservableCollection<Customer>();
             CustomerView = new CollectionView(Customers);
@@ -98,10 +98,10 @@ namespace HelloWorldModule.ViewModel
                                    this.OnLoadAddNewCustomControlCommand, _ => true);
 
             this.SetChildrenMessageTextCommand = new DelegateCommand<object>(
-                                               this.OnLoadSetChildrenMessageTextCommand, _ => true);
+                                               this.OnLoadSetChildrenMessageTextCommand, _ => FocusControlViewModelCollection.Count > 0);
 
             this.SetParentMessageTextCommand = new DelegateCommand<object>(
-                                               this.OnLoadSetParentMessageTextCommand, _ => true);
+                                               this.OnLoadSetParentMessageTextCommand, _ => FocusControlViewModelCollection.Count > 0);
 
         }
 
@@ -144,12 +144,12 @@ namespace HelloWorldModule.ViewModel
                 CustomMessage = string.Empty
             };
             FocusControlViewModelCollection.Add(newControlViewModel);
+            ((DelegateCommand<object>)SetChildrenMessageTextCommand).RaiseCanExecuteChanged();
         }
 
         private void OnLoadCustomersCommand(object obj)
         {
-            //Customers = new ObservableCollection<Customer>(customerService.GetAllCustomer());
-            var customers = customerService.GetAllCustomer();
+            var customers = _customerService.GetAllCustomer();
             CustomerView = CollectionViewSource.GetDefaultView(customers);
 
             if (CustomerView != null)

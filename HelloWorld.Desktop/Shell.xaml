@@ -2,6 +2,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cal="http://www.codeplex.com/prism"
-    Title="Hello World" Height="300" Width="300">
+    Title="Balram - MSA Focus Test" WindowState="Maximized">
     <ItemsControl Name="MainRegion" cal:RegionManager.RegionName="MainRegion" />
 </Window>

@@ -15,6 +15,7 @@ namespace HelloWorld
         protected override DependencyObject CreateShell()
         {
             this.Container.RegisterType<ICustomerService, CustomerService>();
+            //this.Container.RegisterType<ICustomerService, CustomerServiceMock>();
             this.Container.RegisterType<IViewModel, MainViewModel>();
             this.Container.RegisterType<MainView>();
 
