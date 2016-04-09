@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace HelloWorldModule.Utils
 {
-    public class DBManager
+    public class CustomerRepository : ICustomerRepository
     {
         private SqlConnection sqlConnection;
         private string connectionString = @"Data Source =.\SQLExpress;Initial Catalog = MSAFocusDB; User Id = sa; password=123;";

@@ -9,10 +9,15 @@ namespace HelloWorldModule.Repository
 {
     public class CustomerService : ICustomerService
     {
-        private readonly DBManager dbManager = new DBManager();
+        private readonly ICustomerRepository _customerRepository;
+
+        public CustomerService(ICustomerRepository customerRepository)
+        {
+            _customerRepository = customerRepository;
+        }
         public IList<Customer> GetAllCustomer()
         {
-            return dbManager.GetAllCustomers();
+            return _customerRepository.GetAllCustomers();
         }
     }
 }
