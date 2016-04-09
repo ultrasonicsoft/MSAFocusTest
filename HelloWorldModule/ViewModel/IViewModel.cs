@@ -1,4 +1,4 @@
-﻿namespace HelloWorldModule.ViewModel
+﻿namespace MSAFocusModule.ViewModel
 {
     public interface IViewModel
     {

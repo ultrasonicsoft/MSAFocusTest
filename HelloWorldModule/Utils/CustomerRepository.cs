@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace HelloWorldModule.Utils
+namespace MSAFocusModule.Utils
 {
     public class CustomerRepository : ICustomerRepository
     {

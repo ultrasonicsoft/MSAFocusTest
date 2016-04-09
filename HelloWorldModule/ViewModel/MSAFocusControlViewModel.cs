@@ -1,6 +1,6 @@
 ﻿using Microsoft.Practices.Prism.Mvvm;
 
-namespace HelloWorldModule.ViewModel
+namespace MSAFocusModule.ViewModel
 {
     public class MSAFocusControlViewModel : BindableBase, IViewModel
     {

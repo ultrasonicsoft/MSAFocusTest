@@ -2,7 +2,7 @@
 
 using System.Windows;
 
-namespace HelloWorld
+namespace MSAFocusShell
 {
     /// <summary>
     /// Interaction logic for Shell.xaml

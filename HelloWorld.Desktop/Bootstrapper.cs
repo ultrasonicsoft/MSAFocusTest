@@ -2,15 +2,15 @@
 
 using System.Collections.Generic;
 using System.Windows;
-using HelloWorldModule.Repository;
-using HelloWorldModule.Utils;
-using HelloWorldModule.ViewModel;
+using MSAFocusModule.Repository;
+using MSAFocusModule.Utils;
+using MSAFocusModule.ViewModel;
 using MainFocusModule.Views;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.UnityExtensions;
 
-namespace HelloWorld
+namespace MSAFocusShell
 {
     public class Bootstrapper : UnityBootstrapper
     {

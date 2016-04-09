@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using HelloWorldModule.Utils;
+using MSAFocusModule.Utils;
 
-namespace HelloWorldModule.Repository
+namespace MSAFocusModule.Repository
 {
     public interface ICustomerService
     {

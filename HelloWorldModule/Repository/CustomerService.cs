@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HelloWorldModule.Utils;
+using MSAFocusModule.Utils;
 
-namespace HelloWorldModule.Repository
+namespace MSAFocusModule.Repository
 {
     public class CustomerService : ICustomerService
     {

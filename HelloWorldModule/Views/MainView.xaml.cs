@@ -1,5 +1,5 @@
 using System.Windows.Controls;
-using HelloWorldModule.ViewModel;
+using MSAFocusModule.ViewModel;
 
 namespace MainFocusModule.Views
 {

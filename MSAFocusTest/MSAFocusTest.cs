@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using HelloWorldModule.Repository;
-using HelloWorldModule.Utils;
-using HelloWorldModule.ViewModel;
+using MSAFocusModule.Repository;
+using MSAFocusModule.Utils;
+using MSAFocusModule.ViewModel;
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;

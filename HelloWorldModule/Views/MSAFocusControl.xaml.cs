@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace HelloWorldModule.Views
+namespace MSAFocusModule.Views
 {
     public partial class MSAFocusControl : UserControl
     {

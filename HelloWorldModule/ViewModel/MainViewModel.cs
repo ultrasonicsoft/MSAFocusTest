@@ -4,12 +4,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
 using System.Windows.Input;
-using HelloWorldModule.Repository;
-using HelloWorldModule.Utils;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
+using MSAFocusModule.Repository;
+using MSAFocusModule.Utils;
 
-namespace HelloWorldModule.ViewModel
+namespace MSAFocusModule.ViewModel
 {
     public class MainViewModel : BindableBase, IViewModel
     {
@@ -123,7 +123,7 @@ namespace HelloWorldModule.ViewModel
 
         private void OnLoadAddNewRowCommand(object obj)
         {
-            
+            //TODO: Add new row logic here
         }
 
         private void OnLoadSetParentMessageTextCommand(object obj)

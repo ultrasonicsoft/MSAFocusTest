@@ -1,4 +1,4 @@
-namespace HelloWorldModule.Utils
+namespace MSAFocusModule.Utils
 {
     public class Customer
     {

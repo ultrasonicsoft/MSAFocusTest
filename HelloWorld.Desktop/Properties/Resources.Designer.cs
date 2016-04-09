@@ -10,7 +10,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HelloWorld.Properties {
+namespace MSAFocusShell.Properties {
     using System;
     
     
