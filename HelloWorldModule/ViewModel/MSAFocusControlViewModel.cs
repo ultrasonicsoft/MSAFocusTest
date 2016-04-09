@@ -2,7 +2,7 @@
 
 namespace HelloWorldModule.ViewModel
 {
-    public class MSAFocusControlViewModel : BindableBase
+    public class MSAFocusControlViewModel : BindableBase, IViewModel
     {
         private string _id;
         public string Id
@@ -24,10 +24,5 @@ namespace HelloWorldModule.ViewModel
             }
         }
 
-        public MSAFocusControlViewModel()
-        {
-            Id = "This is custom control";
-
-        }
     }
 }

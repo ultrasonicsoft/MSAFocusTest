@@ -47,12 +47,19 @@
                       ItemsSource="{Binding CustomerView}"
                       RowHeight="35"
                       FontSize="16"
-                      CanUserAddRows="True">
+                      CanUserAddRows="True"
+                      SelectionUnit="FullRow"
+                      Tag="{Binding Path=DataContext, RelativeSource={RelativeSource Self}}"
+                      x:Name="customerDataGrid">
 
                 <DataGrid.ContextMenu>
                     <ContextMenu >
-                        <MenuItem Header="Add Row" />
-                        <MenuItem Header="Delete Row" />
+                        <MenuItem Header="Add Row" 
+                                  Command="{Binding AddNewRowCommand}"/>
+                        
+                        <MenuItem Header="Delete Row" 
+                                  Command="{Binding DeleteRowCommand}"
+                                  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}},Path=PlacementTarget.SelectedItem}"/>
                     </ContextMenu>
                 </DataGrid.ContextMenu>
             </DataGrid>

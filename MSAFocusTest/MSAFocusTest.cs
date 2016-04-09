@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using HelloWorldModule.Repository;
 using HelloWorldModule.Utils;
+using HelloWorldModule.ViewModel;
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rhino.Mocks;
 
 namespace MSAFocusTest
 {

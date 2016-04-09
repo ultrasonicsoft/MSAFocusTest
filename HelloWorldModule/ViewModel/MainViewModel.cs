@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
@@ -70,6 +71,9 @@ namespace HelloWorldModule.ViewModel
 
         public ICommand SetParentMessageTextCommand { get; private set; }
 
+        public ICommand AddNewRowCommand { get; private set; }
+        public ICommand DeleteRowCommand { get; private set; }
+
         private int _uniqueCustomControlId = 0;
         private ObservableCollection<MSAFocusControlViewModel> _focusControlViewModelsCollection;
         public ObservableCollection<MSAFocusControlViewModel> FocusControlViewModelCollection
@@ -99,6 +103,27 @@ namespace HelloWorldModule.ViewModel
             this.SetParentMessageTextCommand = new DelegateCommand<object>(
                                                this.OnLoadSetParentMessageTextCommand, _ => FocusControlViewModelCollection.Count > 0);
 
+            this.AddNewRowCommand= new DelegateCommand<object>(
+                                                           this.OnLoadAddNewRowCommand, _ => true);
+
+            this.DeleteRowCommand = new DelegateCommand<object>(
+                                                          this.OnLoadDeleteRowCommand, _ => true);
+
+        }
+
+        private void OnLoadDeleteRowCommand(object obj)
+        {
+            var selectedCustomer = obj as Customer;
+            if (selectedCustomer == null)
+            {
+                return;
+            }
+            Customers.Remove(selectedCustomer);
+        }
+
+        private void OnLoadAddNewRowCommand(object obj)
+        {
+            
         }
 
         private void OnLoadSetParentMessageTextCommand(object obj)
@@ -145,8 +170,8 @@ namespace HelloWorldModule.ViewModel
 
         private void OnLoadCustomersCommand(object obj)
         {
-            var customers = _customerService.GetAllCustomer();
-            CustomerView = CollectionViewSource.GetDefaultView(customers);
+            Customers = new ObservableCollection<Customer>(_customerService.GetAllCustomer());
+            CustomerView = CollectionViewSource.GetDefaultView(Customers);
 
             if (CustomerView != null)
             {
