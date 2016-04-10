@@ -33,36 +33,22 @@
 
             <StackPanel Grid.Row="0"
                     Orientation="Horizontal">
-                <Button Command="{Binding Path=AddNewCustomControlCommand}">Load Custom Control</Button>
-                <Button Command="{Binding Path=SetChildrenMessageTextCommand}">Set Custom Message</Button>
-
-            </StackPanel>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0"
-                        Orientation="Horizontal">
-                    <Label Content="Send Message to Children: "/>
-                    <!--<TextBox Width="150" 
-                         Text="{Binding ParentMessageText}"/>-->
-                    <TextBox>
-                        <TextBox.Text>
-                            <Binding Path="ParentMessageText"
+                <Button Command="{Binding Path=AddNewCustomControlCommand}"
+                        Content="Load Custom Control"/>
+                <Button Command="{Binding Path=SetChildrenMessageTextCommand}"
+                        Content="Set Custom Message"/>
+                <TextBox>
+                    <TextBox.Text>
+                        <Binding Path="ParentMessageText"
                                  UpdateSourceTrigger="PropertyChanged"
                                  diag:PresentationTraceSources.TraceLevel="High"
                                  />
-                        </TextBox.Text>
-                    </TextBox>
-                </StackPanel>
-                <StackPanel Grid.Column="1"
-                        Orientation="Horizontal">
-                    <Label Content="Send Message to Child with Unique Id: "/>
-                    <TextBox Width="150" 
+                    </TextBox.Text>
+                </TextBox>
+                <Label Content="Send Message to Child with Unique Id: "/>
+                <TextBox Width="150" 
                      Text="{Binding UniqueId}"/>
-                </StackPanel>
-            </Grid>
+            </StackPanel>
 
             <ListView Grid.Column="0" 
                   Grid.Row="3" 

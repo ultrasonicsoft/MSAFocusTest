@@ -19,84 +19,45 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
-            <DataGrid Grid.Row="0" 
-                      Grid.Column="1" 
+        <StackPanel Grid.Column="0">
+            <Label>Filter:</Label>
+            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Command="{Binding Path=LoadCustomersCommand}"
+                        Content="Load Customers"/>
+        </StackPanel>
+
+        <DataGrid Grid.Column="1" 
                       ItemsSource="{Binding CustomerView}"
                       RowHeight="35"
                       FontSize="16"
                       CanUserAddRows="True"
                       SelectionUnit="FullRow"
                        IsSynchronizedWithCurrentItem="True"
-                      Tag="{Binding Path=DataContext, RelativeSource={RelativeSource Self}}"
-                      x:Name="customerDataGrid">
-
-                <DataGrid.ContextMenu>
-                    <ContextMenu >
-                        <MenuItem Header="Add Row" 
+                      Tag="{Binding Path=DataContext, RelativeSource={RelativeSource Self}}">
+            <DataGrid.ContextMenu>
+                <ContextMenu >
+                    <MenuItem Header="Add Row" 
                                   Command="{Binding AddNewRowCommand}"/>
 
-                        <MenuItem Header="Delete Row" 
+                    <MenuItem Header="Delete Row" 
                                   Command="{Binding DeleteRowCommand}"
                                   CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}},Path=PlacementTarget.SelectedItem}"/>
-                    </ContextMenu>
-                </DataGrid.ContextMenu>
-            </DataGrid>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
 
-            <StackPanel Grid.Row="0" 
-                        Grid.Column="0">
-                <Label>Filter:</Label>
-                <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <Button Command="{Binding Path=LoadCustomersCommand}">Load Customers</Button>
-            </StackPanel>
-        </Grid>
-        <StackPanel Grid.Row="1"
-                    Orientation="Horizontal">
+        <StackPanel Grid.Column="2">
             <Label FontSize="14" 
                    FontWeight="Bold">Selected Customer Details:</Label>
             <ContentControl Content="{Binding Path=CustomerView, diag:PresentationTraceSources.TraceLevel=High}"
                             ContentTemplate="{StaticResource CustomerDetailTemplate}"/>
         </StackPanel>
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0"
-                        Orientation="Horizontal">
-                <Label Content="Send Message to Children: "/>
-                <!--<TextBox Width="150" 
-                         Text="{Binding ParentMessageText}"/>-->
-                <TextBox>
-                    <TextBox.Text>
-                        <Binding Path="ParentMessageText"
-                                 UpdateSourceTrigger="PropertyChanged"
-                                 diag:PresentationTraceSources.TraceLevel="High"
-                                 />
-                    </TextBox.Text>
-                </TextBox>
-            </StackPanel>
-            <StackPanel Grid.Column="1"
-                        Orientation="Horizontal">
-                <Label Content="Send Message to Child with Unique Id: "/>
-                <TextBox Width="150" 
-                     Text="{Binding UniqueId}"/>
-            </StackPanel>
-        </Grid>
     </Grid>
 </UserControl>
