@@ -171,6 +171,10 @@
       <Project>{DFC0924F-5639-42CC-BF3E-CC4BD805926F}</Project>
       <Name>MSAFocusModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MSAFocusCustomControl\MSAFocusCustomControl.csproj">
+      <Project>{86034A4A-DF15-465C-A054-850C11FE0BAA}</Project>
+      <Name>MSAFocusCustomControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -8,6 +8,7 @@ using MainFocusModule.Views;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.UnityExtensions;
+using MSAFocusCustomControl;
 using MSAFocusModule.Repository;
 
 namespace MSAFocusShell
@@ -38,7 +39,10 @@ namespace MSAFocusShell
             base.ConfigureModuleCatalog();
 
             ModuleCatalog moduleCatalog = (ModuleCatalog)this.ModuleCatalog;
+
             moduleCatalog.AddModule(typeof(MainFocusModule.MainFocusModule));
+
+            moduleCatalog.AddModule(typeof(MSAFocusCustomControlModule));
         }
 
         

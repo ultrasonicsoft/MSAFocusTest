@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MSAFocusModule.Views"
              xmlns:viewModel="clr-namespace:MSAFocusModule.ViewModel"
              mc:Ignorable="d" 
-              d:DataContext="{d:DesignInstance viewModel:MSAFocusControlViewModel, IsDesignTimeCreatable=True}"
+             d:DataContext="{d:DesignInstance viewModel:MSAFocusControlViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
