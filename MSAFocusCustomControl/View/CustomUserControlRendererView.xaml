@@ -47,15 +47,15 @@
                 </TextBox>
                 <Label Content="Send Message to Child with Unique Id: "/>
                 <TextBox Width="150" 
-                     Text="{Binding UniqueId}"/>
+                         Text="{Binding UniqueId}"/>
             </StackPanel>
 
             <ListView Grid.Column="0" 
-                  Grid.Row="3" 
-                  ItemsSource="{Binding FocusControlViewModelCollection}" 
-                  ScrollViewer.CanContentScroll="True"
-                  ScrollViewer.VerticalScrollBarVisibility="Visible"
-                  Height="300" >
+                      Grid.Row="1" 
+                      ItemsSource="{Binding FocusControlViewModelCollection}" 
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      Height="300">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>

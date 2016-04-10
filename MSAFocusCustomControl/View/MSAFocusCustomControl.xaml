@@ -4,7 +4,9 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             xmlns:local="clr-namespace:MSAFocusCustomControl.View"
+            xmlns:viewModel="clr-namespace:MSAFocusCustomControl.ViewModel"
             mc:Ignorable="d" 
+            d:DataContext="{d:DesignInstance viewModel:MSAFocusControlViewModel, IsDesignTimeCreatable=True}"
             d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
@@ -20,8 +22,15 @@
                 Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=2},
                 Path=DataContext.SetParentMessageTextCommand}"
                 CommandParameter="{Binding}">Update Button</Button>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=CustomMessage}" Width="150"></TextBox>
-        <Label Grid.Row="1" Grid.Column="0">Unique Id:</Label>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Id}"></TextBlock>
+        <TextBox Grid.Row="0" 
+                 Grid.Column="1" 
+                 Text="{Binding Path=CustomMessage}" 
+                 Width="150"/>
+        <Label Grid.Row="1" 
+               Grid.Column="0"
+               Content="Unique Id:"/>
+        <TextBlock Grid.Row="1" 
+                   Grid.Column="1" 
+                   Text="{Binding Id}"/>
     </Grid>
 </UserControl>
