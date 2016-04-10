@@ -9,9 +9,10 @@ namespace MSAFocusShell
     /// </summary>
     public partial class Shell : Window
     {
-        public Shell()
+        public Shell(ShellViewModel viewModel)
         {
             InitializeComponent();
-         }
+            this.DataContext = viewModel;
+        }
     }
 }

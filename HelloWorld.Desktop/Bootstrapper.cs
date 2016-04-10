@@ -21,7 +21,7 @@ namespace MSAFocusShell
             this.Container.RegisterType<IViewModel, MainViewModel>();
             this.Container.RegisterType<ICustomerRepository, CustomerRepository>();
             this.Container.RegisterType<MainView>();
-
+            this.Container.RegisterType<ShellViewModel>();
             return this.Container.Resolve<Shell>();
         }
 
