@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="MSAFocusCustomControl.Views.CustomUserControlRendererView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance viewModel1:CustomUserControlRendererViewModel, IsDesignTimeCreatable=True}"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+    xmlns:viewModel1="clr-namespace:MSAFocusCustomControl.ViewModel"
+    xmlns:view="clr-namespace:MSAFocusCustomControl.View">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Theme/Theme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="../Theme/ButtonTheme.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <!--<ResourceDictionary Source="../Theme/Theme.xaml"></ResourceDictionary>-->
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+                <Button Command="{Binding Path=AddNewCustomControlCommand}">Load Custom Control</Button>
+                <Button Command="{Binding Path=SetChildrenMessageTextCommand}">Set Custom Message</Button>
+
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                        Orientation="Horizontal">
+                    <Label Content="Send Message to Children: "/>
+                    <!--<TextBox Width="150" 
+                         Text="{Binding ParentMessageText}"/>-->
+                    <TextBox>
+                        <TextBox.Text>
+                            <Binding Path="ParentMessageText"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 diag:PresentationTraceSources.TraceLevel="High"
+                                 />
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+                    <Label Content="Send Message to Child with Unique Id: "/>
+                    <TextBox Width="150" 
+                     Text="{Binding UniqueId}"/>
+                </StackPanel>
+            </Grid>
+
+            <ListView Grid.Column="0" 
+                  Grid.Row="3" 
+                  ItemsSource="{Binding FocusControlViewModelCollection}" 
+                  ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  Height="300" >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <view:MSAFocusCustomControl DataContext="{Binding}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</UserControl>

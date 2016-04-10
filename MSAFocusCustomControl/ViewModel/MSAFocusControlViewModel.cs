@@ -1,6 +1,6 @@
 ﻿using Microsoft.Practices.Prism.Mvvm;
 
-namespace MSAFocusModule.ViewModel
+namespace MSAFocusCustomControl.ViewModel
 {
     public class MSAFocusControlViewModel : BindableBase, IViewModel
     {
