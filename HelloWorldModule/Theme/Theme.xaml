@@ -12,4 +12,45 @@
         <Setter Property="Margin" Value="0,0,5,5"></Setter>
     </Style>
 
+    <DataTemplate x:Key="CustomerDetailTemplate">
+        <Border Width="300" Height="100" Margin="20"
+          BorderBrush="Aqua" BorderThickness="1" Padding="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Id:"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id}"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name}"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="State:"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=State}"/>
+            </Grid>
+        </Border>
+    </DataTemplate>
+    
+    <!--<Style x:Key="ButtonStyleTest" TargetType="{x:Type Button}">
+        --><!--<Setter Property="OverridesDefaultStyle" Value="True"></Setter>--><!--
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Fill="{TemplateBinding Background}"/>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <DataTemplate x:Key="template1">
+        <TextBox Text="{Binding  Mode=OneWay}" FontSize="10" ></TextBox>
+    </DataTemplate>-->
 </ResourceDictionary>

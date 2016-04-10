@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-2-1934263370
+4-1399296818
 1-2130980668
-12-1852428620
+13-1009569827
 68-1567316371
-Views\MainView.xaml;Views\MSAFocusControl.xaml;
+Theme\ButtonTheme.xaml;Theme\Theme.xaml;Views\MainView.xaml;Views\MSAFocusControl.xaml;
 
 False
 
