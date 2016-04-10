@@ -6,7 +6,6 @@
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance viewModel:MainViewModel, IsDesignTimeCreatable=True}"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
     xmlns:viewModel="clr-namespace:MSAFocusModule.ViewModel">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -19,7 +18,6 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -43,7 +41,6 @@
                       FontSize="16"
                       CanUserAddRows="True"
                       SelectionUnit="FullRow"
-                       IsSynchronizedWithCurrentItem="True"
                       Tag="{Binding Path=DataContext, RelativeSource={RelativeSource Self}}"
                       x:Name="customerDataGrid">
 
@@ -51,7 +48,7 @@
                     <ContextMenu >
                         <MenuItem Header="Add Row" 
                                   Command="{Binding AddNewRowCommand}"/>
-
+                        
                         <MenuItem Header="Delete Row" 
                                   Command="{Binding DeleteRowCommand}"
                                   CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}},Path=PlacementTarget.SelectedItem}"/>
@@ -66,18 +63,10 @@
                 <Button Command="{Binding Path=LoadCustomersCommand}">Load Customers</Button>
                 <Button Command="{Binding Path=AddNewCustomControlCommand}">Load Custom Control</Button>
                 <Button Command="{Binding Path=SetChildrenMessageTextCommand}">Set Custom Message</Button>
-
-                <!--<Button Style="{StaticResource ButtonStyleTest}">Test</Button>
-
-                <ContentControl Name="contCtrl" ContentTemplate="{StaticResource template1}" 
-    Content="This is the content of the content control."/>-->
             </StackPanel>
         </Grid>
+
         <Grid Grid.Row="1">
-            <ContentControl Content="{Binding Path=CustomerView, diag:PresentationTraceSources.TraceLevel=High}"
-                    ContentTemplate="{StaticResource CustomerDetailTemplate}"/>
-        </Grid>
-        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -85,15 +74,8 @@
             <StackPanel Grid.Column="0"
                         Orientation="Horizontal">
                 <Label Content="Send Message to Children: "/>
-                <!--<TextBox Width="150" 
-                         Text="{Binding ParentMessageText}"/>-->
-                <TextBox>
-                    <TextBox.Text>
-                        <Binding Path="ParentMessageText"
-                                 diag:PresentationTraceSources.TraceLevel="High"
-                                 />
-                    </TextBox.Text>
-                </TextBox>
+                <TextBox Width="150" 
+                         Text="{Binding ParentMessageText}"/>
             </StackPanel>
             <StackPanel Grid.Column="1"
                         Orientation="Horizontal">
@@ -103,8 +85,8 @@
             </StackPanel>
         </Grid>
 
-        <ListView Grid.Column="0" Grid.Row="3" ItemsSource="{Binding FocusControlViewModelCollection}" >
-
+        <ListView Grid.Column="0" Grid.Row="2" ItemsSource="{Binding FocusControlViewModelCollection}" >
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <views:MSAFocusControl DataContext="{Binding}"/>

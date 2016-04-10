@@ -45,5 +45,3 @@ C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloW
 C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorld.Desktop\obj\Debug\MSAFocusShell.csproj.GenerateResource.Cache
 C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorld.Desktop\obj\Debug\HelloWorld.exe
 C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorld.Desktop\obj\Debug\HelloWorld.pdb
-C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorld.Desktop\bin\Debug\Rhino.Mocks.dll
-C:\wpf\Getting Started Code Sample Using the Prism Library 5.0 for WPF\C#\HelloWorld.Desktop\bin\Debug\Rhino.Mocks.xml
