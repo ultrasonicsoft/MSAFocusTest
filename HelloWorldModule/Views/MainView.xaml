@@ -107,11 +107,18 @@
             </StackPanel>
         </Grid>
 
-        <ListView Grid.Column="0" Grid.Row="3" ItemsSource="{Binding FocusControlViewModelCollection}" >
+        <ListView Grid.Column="0" 
+                  Grid.Row="3" 
+                  ItemsSource="{Binding FocusControlViewModelCollection}" 
+                  ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  Height="300" >
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <views:MSAFocusControl DataContext="{Binding}"/>
+                    <Grid>
+                        <views:MSAFocusControl DataContext="{Binding}"/>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
