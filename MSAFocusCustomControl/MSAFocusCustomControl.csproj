@@ -102,6 +102,8 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagrams\MSAFocusCustomControlModule.cd" />
+    <None Include="ClassDiagrams\MSAFocusCustomControlViewModel.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

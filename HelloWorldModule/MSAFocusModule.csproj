@@ -151,7 +151,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagrams\MSAFocusViewModel.cd" />
+    <None Include="ClassDiagrams\MSAFocusRepository.cd" />
+    <None Include="ClassDiagrams\MSAFocusModel.cd" />
+    <None Include="ClassDiagrams\MSAFocusModule.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
