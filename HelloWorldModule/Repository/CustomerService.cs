@@ -17,7 +17,15 @@ namespace MSAFocusModule.Repository
         }
         public IList<Customer> GetAllCustomer()
         {
-            return _customerRepository.GetAllCustomers();
+            var dbCustomers = _customerRepository.GetAllCustomers() as List<DbCustomer>;
+            var customers = dbCustomers.ConvertAll((dbCustomer) => new Customer
+            {
+                Id = dbCustomer.CustomerId,
+                Name = dbCustomer.CustomerName,
+                State = dbCustomer.State,
+                Country = dbCustomer.Country
+            });
+            return customers;
         }
     }
 }

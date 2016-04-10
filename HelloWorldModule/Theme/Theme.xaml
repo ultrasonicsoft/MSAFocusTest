@@ -60,6 +60,4 @@
             </Grid>
         </Border>
     </DataTemplate>
-
-
 </ResourceDictionary>

@@ -18,20 +18,10 @@ namespace MSAFocusShell
         public ShellViewModel()
         {
             this.OkCommand = new DelegateCommand<object>(
-                                  this.OnOkCommand, _ => true);
+                                  _ => Application.Current.Shutdown(), _ => true);
 
             this.CancelCommand = new DelegateCommand<object>(
-                                 this.OnCancelCommand, _ => true);
-        }
-
-        private void OnCancelCommand(object obj)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void OnOkCommand(object obj)
-        {
-            Application.Current.Shutdown();
+                                 _ => Application.Current.Shutdown(), _ => true);
         }
     }
 }

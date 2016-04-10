@@ -27,10 +27,10 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
-            <Label>Filter:</Label>
+            <Label Content="Filter:"/>
             <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Command="{Binding Path=LoadCustomersCommand}"
-                        Content="Load Customers"/>
+                    Content="Load Customers"/>
         </StackPanel>
 
         <DataGrid Grid.Column="1" 
@@ -39,8 +39,7 @@
                       FontSize="16"
                       CanUserAddRows="True"
                       SelectionUnit="FullRow"
-                       IsSynchronizedWithCurrentItem="True"
-                      Tag="{Binding Path=DataContext, RelativeSource={RelativeSource Self}}">
+                      IsSynchronizedWithCurrentItem="True">
             <DataGrid.ContextMenu>
                 <ContextMenu >
                     <MenuItem Header="Add Row" 
@@ -48,14 +47,16 @@
 
                     <MenuItem Header="Delete Row" 
                                   Command="{Binding DeleteRowCommand}"
-                                  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}},Path=PlacementTarget.SelectedItem}"/>
+                                  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}},
+                                                        Path=PlacementTarget.SelectedItem}"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
 
         <StackPanel Grid.Column="2">
             <Label FontSize="14" 
-                   FontWeight="Bold">Selected Customer Details:</Label>
+                   FontWeight="Bold"
+                   Content="Selected Customer Details:"/>
             <ContentControl Content="{Binding Path=CustomerView, diag:PresentationTraceSources.TraceLevel=High}"
                             ContentTemplate="{StaticResource CustomerDetailTemplate}"/>
         </StackPanel>

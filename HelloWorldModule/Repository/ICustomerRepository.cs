@@ -9,6 +9,6 @@ namespace MSAFocusModule.Repository
 {
     public interface ICustomerRepository
     {
-        IList<Customer> GetAllCustomers();
+        IList<DbCustomer> GetAllCustomers();
     }
 }

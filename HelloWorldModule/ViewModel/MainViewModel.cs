@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -32,7 +33,6 @@ namespace MSAFocusModule.ViewModel
                 SetProperty(ref this._searchText, value);
                 CustomerView.Refresh();
             }
-
         }
 
         private ICollectionView _customerView;
@@ -44,7 +44,6 @@ namespace MSAFocusModule.ViewModel
         }
 
         public ICommand LoadCustomersCommand { get; private set; }
-
         public ICommand AddNewRowCommand { get; private set; }
         public ICommand DeleteRowCommand { get; private set; }
 
@@ -59,14 +58,14 @@ namespace MSAFocusModule.ViewModel
                                    this.OnLoadCustomersCommand, _ => true);
 
             this.AddNewRowCommand= new DelegateCommand<object>(
-                                                           this.OnLoadAddNewRowCommand, _ => true);
+                                                           this.OnAddNewRowCommand, _ => true);
 
             this.DeleteRowCommand = new DelegateCommand<object>(
-                                                          this.OnLoadDeleteRowCommand, _ => true);
+                                                          this.OnDeleteRowCommand, _ => true);
 
         }
 
-        private void OnLoadDeleteRowCommand(object obj)
+        private void OnDeleteRowCommand(object obj)
         {
             var selectedCustomer = obj as Customer;
             if (selectedCustomer == null)
@@ -76,20 +75,29 @@ namespace MSAFocusModule.ViewModel
             Customers.Remove(selectedCustomer);
         }
 
-        private void OnLoadAddNewRowCommand(object obj)
+        private void OnAddNewRowCommand(object obj)
         {
             //TODO: Add new row logic here
         }
 
         private void OnLoadCustomersCommand(object obj)
         {
-            Customers = new ObservableCollection<Customer>(_customerService.GetAllCustomer());
-            CustomerView = CollectionViewSource.GetDefaultView(Customers);
-
-            if (CustomerView != null)
+            try
             {
-                CustomerView.Filter = TextFilter;
+                Customers = new ObservableCollection<Customer>(_customerService.GetAllCustomer());
+                CustomerView = CollectionViewSource.GetDefaultView(Customers);
+
+                if (CustomerView != null)
+                {
+                    CustomerView.Filter = TextFilter;
+                }
             }
+            catch (Exception exception)
+            {
+                Debug.Fail(exception.Message);
+                throw;
+            }
+           
         }
 
         public bool TextFilter(object o)

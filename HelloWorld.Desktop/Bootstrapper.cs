@@ -44,8 +44,6 @@ namespace MSAFocusShell
 
             moduleCatalog.AddModule(typeof(MSAFocusCustomControlModule));
         }
-
-        
     }
   
 }
