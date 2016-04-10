@@ -2,13 +2,13 @@
 
 using System.Collections.Generic;
 using System.Windows;
-using MSAFocusModule.Repository;
-using MSAFocusModule.Utils;
+using MSAFocusModule.Model;
 using MSAFocusModule.ViewModel;
 using MainFocusModule.Views;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.UnityExtensions;
+using MSAFocusModule.Repository;
 
 namespace MSAFocusShell
 {
