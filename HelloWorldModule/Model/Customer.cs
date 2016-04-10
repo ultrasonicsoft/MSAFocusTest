@@ -1,4 +1,4 @@
-namespace MSAFocusModule.Utils
+namespace MSAFocusModule.Model
 {
     public class Customer
     {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using MSAFocusModule.Utils;
+using MSAFocusModule.Model;
 
 namespace MSAFocusModule.Repository
 {

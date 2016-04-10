@@ -109,8 +109,8 @@
     <Compile Include="Repository\CustomerServiceMock.cs" />
     <Compile Include="Repository\ICustomerService.cs" />
     <Compile Include="Model\Customer.cs" />
-    <Compile Include="Utils\CustomerRepository.cs" />
-    <Compile Include="Utils\ICustomerRepository.cs" />
+    <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\ICustomerRepository.cs" />
     <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\MSAFocusControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -159,11 +159,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Database\MSAFocusDB.sql" />
   </ItemGroup>

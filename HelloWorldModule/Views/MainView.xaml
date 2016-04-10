@@ -93,6 +93,7 @@
                 <TextBox>
                     <TextBox.Text>
                         <Binding Path="ParentMessageText"
+                                 UpdateSourceTrigger="PropertyChanged"
                                  diag:PresentationTraceSources.TraceLevel="High"
                                  />
                     </TextBox.Text>

@@ -6,8 +6,8 @@ using System.Windows.Data;
 using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
+using MSAFocusModule.Model;
 using MSAFocusModule.Repository;
-using MSAFocusModule.Utils;
 
 namespace MSAFocusModule.ViewModel
 {
@@ -43,6 +43,7 @@ namespace MSAFocusModule.ViewModel
             set
             {
                 SetProperty(ref this._parentMessageText, value);
+                ((DelegateCommand<object>)SetChildrenMessageTextCommand).RaiseCanExecuteChanged();
             }
         }
 
@@ -98,7 +99,7 @@ namespace MSAFocusModule.ViewModel
                                    this.OnLoadAddNewCustomControlCommand, _ => true);
 
             this.SetChildrenMessageTextCommand = new DelegateCommand<object>(
-                                               this.OnLoadSetChildrenMessageTextCommand, _ => FocusControlViewModelCollection.Count > 0);
+                                               this.OnLoadSetChildrenMessageTextCommand, _ => FocusControlViewModelCollection.Count > 0 && ! string.IsNullOrEmpty(ParentMessageText));
 
             this.SetParentMessageTextCommand = new DelegateCommand<object>(
                                                this.OnLoadSetParentMessageTextCommand, _ => FocusControlViewModelCollection.Count > 0);

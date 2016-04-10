@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using MSAFocusModule.Model;
 
-namespace MSAFocusModule.Utils
+namespace MSAFocusModule.Repository
 {
     public class CustomerRepository : ICustomerRepository
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MSAFocusModule.Repository;
-using MSAFocusModule.Utils;
+using MSAFocusModule.Model;
 using MSAFocusModule.ViewModel;
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MSAFocusModule.Repository;
 using Rhino.Mocks;
 
 namespace MSAFocusTest
